@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require File.dirname(__FILE__) + '/../test_helper'
-require "set"
 
 class TestStashes < Test::Unit::TestCase
   def setup
