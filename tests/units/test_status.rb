@@ -16,6 +16,12 @@ class TestStashes < Test::Unit::TestCase
         # ignore pipe file.
         system("mkfifo", "--mode=600", "pipe-file")
         assert_equal([], g.status.untracked)
+
+        # ignore socket file.
+        require "socket"
+        UNIXServer.open("unix-socket-file") do
+        end
+        assert_equal([], g.status.untracked)
       end
     end
   end
