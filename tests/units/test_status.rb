@@ -26,6 +26,10 @@ class TestStashes < Test::Unit::TestCase
         # ignore charactor device file.
         system("sudo mknod charactor-device-file c 1 5")
         assert_equal([], g.status.untracked)
+
+        # ignore block device file.
+        system("sudo mknod block-device-file b 1 5")
+        assert_equal([], g.status.untracked)
       end
     end
   end
