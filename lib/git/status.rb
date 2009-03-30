@@ -86,7 +86,7 @@ module Git
         # find untracked in working dir
         Dir.chdir(@base.dir.path) do
           Dir.glob('**/*') do |file|
-            @files[file] = {:path => file, :untracked => true} unless @files[file] || File.directory?(file) || File.pipe?(file) || File.socket?(file) || ignore.include?(file)
+            @files[file] = {:path => file, :untracked => true} unless @files[file] || File.directory?(file) || File.pipe?(file) || File.socket?(file) || File.chardev?(file) || ignore.include?(file)
           end
         end
         
