@@ -14,7 +14,7 @@ class TestStashes < Test::Unit::TestCase
         assert_equal([], g.status.untracked)
 
         # ignore pipe file.
-        system("mkfifo", "--mode=600", "pipe-file")
+        system('mkfifo pipe-file')
         assert_equal([], g.status.untracked)
 
         # ignore socket file.
