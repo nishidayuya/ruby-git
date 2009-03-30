@@ -86,7 +86,7 @@ module Git
         # find untracked in working dir
         Dir.chdir(@base.dir.path) do
           Dir.glob('**/*') do |file|
-            @files[file] = {:path => file, :untracked => true} unless @files[file] || File.directory?(file) || File.pipe?(file) || File.socket?(file) || File.chardev?(file) || File.blockdev?(file) || ignore.include?(file)
+            @files[file] = {:path => file, :untracked => true} unless @files[file] || ignore_file_type?(file) || ignore.include?(file)
           end
         end
         
@@ -103,6 +103,14 @@ module Git
         @files.each do |k, file_hash|
           @files[k] = StatusFile.new(@base, file_hash)
         end
+      end
+
+      def ignore_file_type?(file)
+        File.directory?(file) ||
+        File.pipe?(file) ||
+        File.socket?(file) ||
+        File.chardev?(file) ||
+        File.blockdev?(file)
       end
       
   end
