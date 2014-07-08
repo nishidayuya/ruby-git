@@ -15,3 +15,9 @@ matrix:
   allow_failures:
     - rbx-18mode
     - rbx-19mode
+
+# only nishidayuya branches
+branches:
+  only:
+    - ignore_charactor_device_file_and_block_device_file
+    - restore_environments
