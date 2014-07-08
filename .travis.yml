@@ -21,3 +21,4 @@ branches:
   only:
     - ignore_charactor_device_file_and_block_device_file
     - restore_environments
+    - fix_warnings_on_ruby_2.1.2
